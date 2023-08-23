@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 export const useTablePaginationControls = ({ field, initialRowsPerPage }) => {
   const [page, setPage] = useState(0);
-  const [order, setOrder] = useState('desc');
+  const [order, setOrder] = useState('asc');
   const [orderBy, setOrderBy] = useState(field);
   const [rowsPerPage, setRowsPerPage] = useState(initialRowsPerPage);
 

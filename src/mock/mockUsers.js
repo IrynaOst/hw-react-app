@@ -6,6 +6,7 @@ export const mockUsers = [
     age: 43,
     birthDate: '21.06.1980',
     email: 'roman70@example.com',
+    profession: 'Project manager',
     hobby: 'running, yoga, doing puzzles, reading, and cooking',
   },
   {
@@ -15,6 +16,7 @@ export const mockUsers = [
     age: 33,
     birthDate: '12.02.1990',
     email: 'kate70@example.com',
+    profession: 'Frontend Developer',
     hobby: 'skiing, jet skiing, weight lifting, scuba diving, kickboxing, boxing, board games',
   },
   {
@@ -24,6 +26,7 @@ export const mockUsers = [
     age: 22,
     birthDate: '27.09.2000',
     email: 'kirunchik@example.com',
+    profession: 'Student',
     hobby: 'table tennis, hiking, bowling, juggling, reading, and cooking',
   },
   {
@@ -33,6 +36,7 @@ export const mockUsers = [
     age: 28,
     birthDate: '10.12.1994',
     email: 'razy@example.com',
+    profession: 'Social media specialist',
     hobby: 'running, bowling, hiking, reading, visiting and walking around area gardens',
   },
   {
@@ -42,6 +46,7 @@ export const mockUsers = [
     age: 62,
     birthDate: '11.04.1959',
     email: 'i1960@example.com',
+    profession: 'Graphic designer',
     hobby: 'origami, yoga, metal detecting, reading, and card making',
   },
   {
@@ -51,6 +56,7 @@ export const mockUsers = [
     age: 43,
     birthDate: '21.06.1980',
     email: 'roman70@example.com',
+    profession: 'Administrative assistant',
     hobby: 'running, yoga, doing puzzles, reading, and cooking',
   },
   {
@@ -60,6 +66,7 @@ export const mockUsers = [
     age: 33,
     birthDate: '12.02.1990',
     email: 'kate70@example.com',
+    profession: 'Janitor',
     hobby: 'skiing, jet skiing, weight lifting, scuba diving, kickboxing, boxing, board games',
   },
   {
@@ -69,6 +76,7 @@ export const mockUsers = [
     age: 20,
     birthDate: '27.09.2002',
     email: 'kirunchik@example.com',
+    profession: 'Event planner',
     hobby: 'table tennis, hiking, bowling, juggling, reading, and cooking',
   },
   {
@@ -78,6 +86,7 @@ export const mockUsers = [
     age: 27,
     birthDate: '10.12.1995',
     email: 'razy@example.com',
+    profession: 'Business analyst',
     hobby: 'running, bowling, hiking, reading, visiting and walking around area gardens',
   },
   {
@@ -87,6 +96,7 @@ export const mockUsers = [
     age: 51,
     birthDate: '11.04.1968',
     email: 'i1960@example.com',
+    profession: 'Backend Developer',
     hobby: 'origami, yoga, metal detecting, reading, and card making',
   },
   {
@@ -96,6 +106,7 @@ export const mockUsers = [
     age: 51,
     birthDate: '11.04.1968',
     email: 'i1960@example.com',
+    profession: 'Full-stack Developer',
     hobby: 'bowling, hiking, reading',
   },
 ]

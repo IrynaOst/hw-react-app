@@ -1,14 +1,18 @@
-// import { useContext } from 'react';
+import { useState } from 'react';
 import { TableRow, TableCell } from '@mui/material';
-// import { AdminPanelDialogsContext } from './AdminPanelDialogsContext';
+import { UserDetailsDialog } from './UserDetailsDialog';
 
-export const UserRowComponent = ({ rowData }) => {
-  // const { openDetailsDialog } = useContext(AdminPanelDialogsContext);
-  const { id, firstName, age, birthDate } = rowData;
+export const UserRowComponent = ({ rowData: user }) => {
+  const { id, firstName, age, birthDate } = user;
+  const [open, setOpen] = useState(false);
+  
+  const handleCloseDetails = () => {
+    setOpen(false);
+  };
 
-  // const handleOpenDetails = () => {
-  //   openDetailsDialog(rowData);
-  // };
+  const handleOpenDetails = () => {
+    setOpen(true);
+  }
 
   return (
     <>
@@ -16,19 +20,24 @@ export const UserRowComponent = ({ rowData }) => {
         hover
         key={id}
         tabIndex={-1}
-        // onClick={handleOpenDetails}
+        onClick={handleOpenDetails}
         sx={{ cursor: 'pointer' }}
       >
-        <TableCell width='30%'>
+        <TableCell>
           {firstName}
         </TableCell>
-        <TableCell align='left' width='35%'>
+        <TableCell>
           {age}
         </TableCell>
-        <TableCell align='left' width='35%'>
+        <TableCell>
           {birthDate}
         </TableCell>
       </TableRow>
+      <UserDetailsDialog
+        userDetails={user}
+        open={open}
+        handleClose={handleCloseDetails}
+      />
     </>
   );
 };
