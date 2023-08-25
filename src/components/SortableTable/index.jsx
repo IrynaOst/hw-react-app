@@ -1,3 +1,4 @@
+import { useMemo, memo } from 'react';
 import {
   Table,
   TableRow,
@@ -11,7 +12,7 @@ import { stableSort, getComparator } from '../../utils/tableSorter';
 import { SortableTableHead } from './SortableTableHead';
 import { TableNoData } from './TableNoData';
 
-export const SortableTable = ({
+export const SortableTable = memo(({
   rowItems,
   page,
   rowsPerPage,
@@ -21,8 +22,15 @@ export const SortableTable = ({
   tableHeadData,
   handleRequestSort,
 }) => {
-  const sortedRowItems = stableSort(rowItems, getComparator(order, orderBy));
-  const emptyRows = page > 0 ? Math.max(0, (1 + page) * rowsPerPage - rowItems.length) : 0;
+  const sortedRowItems = useMemo(
+    ()=> stableSort(rowItems, getComparator(order, orderBy)),
+    [rowItems, order, orderBy]
+  );
+
+  const emptyRows = useMemo(() => 
+    page > 0 ? Math.max(0, (1 + page) * rowsPerPage - rowItems.length) : 0,
+    [page, rowsPerPage]
+  );
 
   return (
     <TableContainer sx={{ minWidth: 800 }}>
@@ -52,4 +60,4 @@ export const SortableTable = ({
       </Table>
     </TableContainer>
   );
-};
+});

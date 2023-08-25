@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import {
   TableRow,
   TableCell,
@@ -5,7 +6,7 @@ import {
   TableSortLabel,
 } from '@mui/material';
 
-export const SortableTableHead = ({
+export const SortableTableHead = memo(({
   order,
   orderBy,
   tableHeadData,
@@ -39,4 +40,4 @@ export const SortableTableHead = ({
       </TableRow>
     </TableHead>
   );
-};
+});

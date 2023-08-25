@@ -1,8 +1,8 @@
-import { useState } from 'react';
+import { useState, memo } from 'react';
 import { TableRow, TableCell } from '@mui/material';
 import { UserDetailsDialog } from './UserDetailsDialog';
 
-export const UserRowComponent = ({ rowData: user }) => {
+export const UserRowComponent = memo(({ rowData: user }) => {
   const { id, firstName, age, birthDate } = user;
   const [open, setOpen] = useState(false);
   
@@ -23,13 +23,20 @@ export const UserRowComponent = ({ rowData: user }) => {
         onClick={handleOpenDetails}
         sx={{ cursor: 'pointer' }}
       >
-        <TableCell>
+        <TableCell 
+          width={'30%'}
+          style={{
+            maxWidth: '100px',
+            overflow: 'hidden',
+            textOverflow: 'ellipsis',
+            whiteSpace: 'nowrap',
+          }}>
           {firstName}
         </TableCell>
-        <TableCell>
+        <TableCell width={'35%'}>
           {age}
         </TableCell>
-        <TableCell>
+        <TableCell width={'35%'}>
           {birthDate}
         </TableCell>
       </TableRow>
@@ -40,4 +47,4 @@ export const UserRowComponent = ({ rowData: user }) => {
       />
     </>
   );
-};
+});

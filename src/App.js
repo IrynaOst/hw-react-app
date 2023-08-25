@@ -1,4 +1,4 @@
-import { UserPage } from "./pages/UserPage";
+import { UserPage } from './pages/UserPage';
 
 function App() {
   return (
