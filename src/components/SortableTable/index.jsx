@@ -1,4 +1,4 @@
-import { useMemo, memo } from 'react';
+import { useMemo, memo, useState } from 'react';
 import {
   Table,
   TableRow,
@@ -16,21 +16,25 @@ export const SortableTable = memo(({
   rowItems,
   page,
   rowsPerPage,
-  order,
-  orderBy,
   RowComponent,
   tableHeadData,
-  handleRequestSort,
+  defaultSortProperty,
 }) => {
+  const [order, setOrder] = useState('asc');
+  const [orderBy, setOrderBy] = useState(defaultSortProperty || 'id');
+
+  const handleRequestSort = (property) => {
+    const isAsc = orderBy === property && order === 'asc';
+    setOrder(isAsc ? 'desc' : 'asc');
+    setOrderBy(property);
+  };
+
   const sortedRowItems = useMemo(
     ()=> stableSort(rowItems, getComparator(order, orderBy)),
     [rowItems, order, orderBy]
   );
 
-  const emptyRows = useMemo(() => 
-    page > 0 ? Math.max(0, (1 + page) * rowsPerPage - rowItems.length) : 0,
-    [page, rowsPerPage]
-  );
+  const emptyRowsCount = page > 0 ? Math.max(0, (1 + page) * rowsPerPage - rowItems.length) : 0;
 
   return (
     <TableContainer sx={{ minWidth: 800 }}>
@@ -50,8 +54,8 @@ export const SortableTable = memo(({
                 rowData={row}
               />
             ))}
-          {emptyRows > 0 && (
-            <TableRow style={{ height: 53 * emptyRows }}>
+          {emptyRowsCount > 0 && (
+            <TableRow style={{ height: 53 * emptyRowsCount }}>
               <TableCell colSpan={6} />
             </TableRow>
           )}

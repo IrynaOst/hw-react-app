@@ -13,7 +13,7 @@ import { SortableTable } from '../../components/SortableTable';
 import { UserRowComponent } from './UserRowComponent';
 
 export const UserPage = () => {
-  const [users, setUsers] = useState(null);
+  const [users, setUsers] = useState([]);
 
   const fetchUsers = async () => {
     await new Promise(resolve => setTimeout(resolve, 1000));
@@ -26,14 +26,10 @@ export const UserPage = () => {
 
   const {
     page,
-    order,
-    orderBy,
     rowsPerPage,
-    handleRequestSort,
     handleChangePage,
     handleChangeRowsPerPage,
   } = useTablePaginationControls({
-    field: USER_DEFAULT_SORT_PROPERTY,
     initialRowsPerPage: USER_RAWS_PER_PAGE_OPTIONS[0],
   });
 
@@ -42,19 +38,17 @@ export const UserPage = () => {
       <h1>Users</h1>
       <Card>
         <SortableTable
-          rowItems={Array.isArray(users) ? users : []}
+          rowItems={users}
           page={page}
           rowsPerPage={rowsPerPage}
-          order={order}
-          orderBy={orderBy}
           RowComponent={UserRowComponent}
           tableHeadData={TABLE_HEAD}
-          handleRequestSort={handleRequestSort}
+          defaultSortProperty={USER_DEFAULT_SORT_PROPERTY}
         />
         <TablePagination
           rowsPerPageOptions={USER_RAWS_PER_PAGE_OPTIONS}
           component='div'
-          count={Array.isArray(users) ? users.length : 0}
+          count={users.length || 0}
           rowsPerPage={rowsPerPage}
           page={page}
           onPageChange={handleChangePage}
