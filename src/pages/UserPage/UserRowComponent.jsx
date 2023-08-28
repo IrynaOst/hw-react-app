@@ -41,7 +41,7 @@ export const UserRowComponent = memo(({ rowData: user }) => {
         </TableCell>
       </TableRow>
       <UserDetailsDialog
-        userDetails={user}
+        user={user}
         open={open}
         handleClose={handleCloseDetails}
       />

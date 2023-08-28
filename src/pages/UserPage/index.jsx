@@ -1,7 +1,6 @@
-import { useState, useEffect } from 'react';
-import { Container, Card, TablePagination } from '@mui/material';
+import { useContext } from 'react';
+import { Card, Box, TablePagination } from '@mui/material';
 
-import { mockUsers } from '../../mock/mockUsers';
 import { useTablePaginationControls } from '../../hooks/useTablePaginationControls';
 import {
   USER_RAWS_PER_PAGE_OPTIONS,
@@ -11,18 +10,10 @@ import {
 
 import { SortableTable } from '../../components/SortableTable';
 import { UserRowComponent } from './UserRowComponent';
+import { UserContext } from '../../contexts/UserContext';
 
 export const UserPage = () => {
-  const [users, setUsers] = useState([]);
-
-  const fetchUsers = async () => {
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    setUsers(mockUsers);
-  };
-
-  useEffect(() => {
-    fetchUsers();
-  }, []);
+  const { users } = useContext(UserContext);
 
   const {
     page,
@@ -34,7 +25,7 @@ export const UserPage = () => {
   });
 
   return (
-    <Container>
+    <Box sx={{ minWidth: '70%' }}>
       <h1>Users</h1>
       <Card>
         <SortableTable
@@ -55,6 +46,6 @@ export const UserPage = () => {
           onRowsPerPageChange={handleChangeRowsPerPage}
         />
       </Card>
-    </Container>
+    </Box>
   )
 }

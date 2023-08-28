@@ -1,8 +1,11 @@
 import { render, screen } from '@testing-library/react';
 import App from './App';
 
-test('renders learn react link', () => {
+it('renders texts "List of users" and "Users"', () => {
   render(<App />);
-  const linkElement = screen.getByText(/Users/i);
-  expect(linkElement).toBeInTheDocument();
+  const listTextElement = screen.getByText(/List of users/i);
+  const usersTextElements = screen.getAllByText(/Users/gi);
+
+  expect(listTextElement).toBeInTheDocument();
+  expect(usersTextElements.length).toBeGreaterThan(0);
 });

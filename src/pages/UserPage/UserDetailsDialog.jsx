@@ -1,3 +1,4 @@
+import { useContext } from 'react';
 import {
   Button,
   Dialog,
@@ -10,10 +11,12 @@ import {
   TableCell,
   TableRow,
 } from '@mui/material';
+import { UserContext } from '../../contexts/UserContext';
 
-export const UserDetailsDialog = ({ userDetails, handleClose, open }) => {
-  const { firstName, lastName, email, hobby, profession } = userDetails || {};
-
+export const UserDetailsDialog = ({ user, handleClose, open }) => {
+  const { firstName, lastName, email, hobby, profession } = user || {};
+  const { handleAddUser } = useContext(UserContext);
+  
   return (
     <Dialog
       open={open}
@@ -40,6 +43,9 @@ export const UserDetailsDialog = ({ userDetails, handleClose, open }) => {
         </TableContainer>
       </DialogContent>
       <DialogActions>
+        <Button variant='outlined' onClick={() => handleAddUser(user)}>
+          Add
+        </Button>
         <Button variant='outlined' onClick={handleClose}>
           Close
         </Button>
