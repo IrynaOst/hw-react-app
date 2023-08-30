@@ -29,6 +29,7 @@ export const UserList = () => {
             key={user.id}
             secondaryAction={
               <IconButton
+                data-testid='remove'
                 edge='end'
                 aria-label='delete'
                 onClick={() => handleRemoveUser(user)

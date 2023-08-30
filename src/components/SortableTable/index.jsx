@@ -7,7 +7,7 @@ import {
   TableContainer,
 } from '@mui/material';
 
-import { stableSort, getComparator } from '../../utils/tableSorter';
+import { stableSort, getComparator } from '../../utils/tableSorter/tableSorter';
 
 import { SortableTableHead } from './SortableTableHead';
 import { TableNoData } from './TableNoData';
